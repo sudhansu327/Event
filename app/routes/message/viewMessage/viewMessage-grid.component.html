@@ -1,0 +1,134 @@
+﻿<div class="container  col-md-12">
+    <div class="panel panel-transparent">
+        <tabset justified="true">
+            <tab>
+                <template tabHeading>
+                    <em class="fa fa-history fa-fw"></em>History
+                </template>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12 vertical-space3">
+                                <div class="pull-right horizontal-space15 ">
+                                    <div class="pull-left vertical-space5">Page Size: &nbsp;</div>
+                                    <select [(ngModel)]="historyState.take" class="form-control input-sm pull-left width65">
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <kendo-grid [kendoGridBinding]="historyMessageList"
+                                        [height]="300"
+                                        [skip]="historyState.skip"
+                                        [pageSize]="historyState.take"
+                                        [pageable]="true"
+                                        [sortable]="true"
+                                        [sort]="historyState.sort"
+                                        (valueChange)="historyGridPageChange($event)">
+                                <kendo-grid-column field="Message" title="Message"></kendo-grid-column>
+                                <kendo-grid-column field="Audience" title="Audience"></kendo-grid-column>
+                                <kendo-grid-column field="Delivery" title="Delivery"></kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <template tabHeading>
+                    <em class="fa fa-floppy-o fa-fw"></em>Drafts
+                </template>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12 vertical-space3">
+                                <div class="pull-right horizontal-space15 ">
+                                    <div class="pull-left vertical-space5">Page Size: &nbsp;</div>
+                                    <select [(ngModel)]="draftState.take" class="form-control input-sm pull-left width65">
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <kendo-grid [kendoGridBinding]="draftsMessageList"
+                                         [height]="300"
+                                         [skip]="draftState.skip"
+                                         [pageSize]="draftState.take"
+                                         [pageable]="true"
+                                         [sortable]="true"
+                                         [sort]="draftState.sort"
+                                         (edit)="editHandler($event)"
+                                         (remove)="removeHandler($event)"
+                                         (valueChange)="pageChange($event)">
+                                <kendo-grid-column field="Message" title="Message"></kendo-grid-column>
+                                <kendo-grid-column field="Audience" title="Audience"></kendo-grid-column>
+                                <kendo-grid-column field="Delivery" title="Delivery"></kendo-grid-column>
+                                <kendo-grid-command-column title="Actions" width="220">
+                                    <template let-isNew="isNew">
+                                        <!-- edit command directive, will be visible when not in edit mode -->
+                                        <button kendoGridEditCommand class="btn btn-success btn-outline">Edit</button>
+                                        <!-- remove command directive, will be visible when not in edit mode -->
+                                        <button kendoGridRemoveCommand class="btn btn-danger btn-outline">Delete</button>
+                                        <!-- save command directive, will be visible when in edit mode -->
+                                        <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+                                        <!-- cancel command directive, will be visible when in edit mode -->
+                                        <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+                                    </template>
+                                </kendo-grid-command-column>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <template tabHeading>
+                    <em class="fa fa-calendar fa-fw"></em>Scheduled
+                </template>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12 vertical-space3">
+                                <div class="pull-right horizontal-space15 ">
+                                    <div class="pull-left vertical-space5">Page Size: &nbsp;</div>
+                                    <select [(ngModel)]="scheduledState.take" class="form-control input-sm pull-left width65">
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <kendo-grid [kendoGridBinding]="scheduledMessageList"
+                                        [height]="300"
+                                        [skip]="scheduledState.skip"
+                                        [pageSize]="scheduledState.take"
+                                        [pageable]="true"
+                                        [sortable]="true"
+                                        [sort]="scheduledState.sort"
+                                        (valueChange)="scheduledGridPageChange($event)">
+                                <kendo-grid-column field="Message" title="Message"></kendo-grid-column>
+                                <kendo-grid-column field="Audience" title="Audience"></kendo-grid-column>
+                                <kendo-grid-column field="Delivery" title="Delivery"></kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>

@@ -1,0 +1,2 @@
+﻿<input type="text" value="{{dateModel | date:'MM/dd/yy'}}" class="form-control" (focus)="showPopup()" />
+<datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" [showWeeks]="false" (selectionDone)="hidePopup($event)"></datepicker>

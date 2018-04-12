@@ -1,0 +1,72 @@
+<div class="content-heading">
+    {{title}}
+    <small>{{subtitle}}</small>
+</div>
+
+<label>FBO</label>
+<div class="control-label">
+    <kendo-combobox [data]="fboComboBoxList"
+                    [textField]="'LocationName'"
+                    [valueField]="'LocationId'"
+                    [placeholder]="'Select FBO'"
+                    [value]="selectedFbo"
+                    [filterable]="true"
+                    (filterChange)="fboFilter($event)"
+                    (selectionChange)="fboSelection($event)"
+                    (click)="fboFill()">
+    </kendo-combobox>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 3px">
+                <div class="pull-right">
+                    <div class="pull-left" style="margin-top: 5px;">Page Size: &nbsp;</div>
+                    <select style="width: 65px;" [(ngModel)]="pageSize" class="form-control input-sm pull-left">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <kendo-grid [data]="gridView" [height]="500" [skip]="state.skip" [pageSize]="pageSize" [pageable]="true" [sortable]="true"
+                    [sort]="state.sort" (pageChange)="pageChange($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+                    (save)="saveHandler($event)">
+
+            <!--<!--<kendo-grid-column field="Location.LocationId" title="Fbo Id"></kendo-grid-column>-->
+            <kendo-grid-column field="LocationId" title="Fbo Id"></kendo-grid-column>-->
+            <kendo-grid-column field="LocationName" title="Fbo Name"></kendo-grid-column>
+            <kendo-grid-column field="LocationAddress" title="Address"></kendo-grid-column>
+            <kendo-grid-column field="AirPortCity" title="Airport City"></kendo-grid-column>-->
+            <!--<kendo-grid-column field="GeofenceId" title="Geofence Id"></kendo-grid-column>-->
+            <kendo-grid-column field="GeofenceName" title="Geofence Name">
+                <template kendoGridEditTemplate>
+                    <kendo-combobox [data]="geofenceComboBoxList"
+                                    [textField]="'GeofenceName'"
+                                    [valueField]="'GeofenceId'"
+                                    [placeholder]="'Select Geofence'"
+                                    [value]="selectedGeofence"
+                                    [filterable]="true"
+                                    (selectionChange)="geofenceSelection($event)"
+                                    (filterChange)="geofenceFilter($event)"
+                                    (click)="geofenceFill()">
+                    </kendo-combobox>
+                </template>
+            </kendo-grid-column>
+            <kendo-grid-command-column title="Actions" width="220">
+                <template let-isNew="isNew">
+                    <!-- edit command directive, will be visible when not in edit mode -->
+                    <button kendoGridEditCommand class="btn btn-success btn-outline">Edit</button>
+                    <!-- save command directive, will be visible when in edit mode -->
+                    <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+                    <!-- cancel command directive, will be visible when in edit mode -->
+                    <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+                </template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+</div>

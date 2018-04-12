@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{180973BF-83EF-44FC-889C-61A7B87A7D2E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EventsPromotions.Web</RootNamespace>
+    <AssemblyName>EventsPromotions.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile>
+    </TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <!--<TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>-->
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>
+    </TypeScriptSourceRoot>
+    <TypeTypeScriptModuleResolution>NodeJs</TypeTypeScriptModuleResolution>
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+    <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile>
+    </TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <!--<TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>-->
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>
+    </TypeScriptSourceRoot>
+    <TypeTypeScriptModuleResolution>NodeJs</TypeTypeScriptModuleResolution>
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+    <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetPasswordSDK">
+      <HintPath>..\Libraries\PsxDlls\NetPasswordSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Security.PasswordManagement">
+      <HintPath>..\Libraries\PsxDlls\Security.PasswordManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Security.PasswordManagement.Encryption">
+      <HintPath>..\Libraries\PsxDlls\Security.PasswordManagement.Encryption.dll</HintPath>
+    </Reference>
+    <Reference Include="Security.PasswordManagement.PasswordVault">
+      <HintPath>..\Libraries\PsxDlls\Security.PasswordManagement.PasswordVault.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\core\preloader\preloader.component.html" />
+    <Content Include="app\layout\footer\footer.component.html" />
+    <Content Include="app\layout\header\header.component.html" />
+    <Content Include="app\layout\header\navsearch\navsearch.component.html" />
+    <Content Include="app\layout\layout.component.html" />
+    <Content Include="app\layout\offsidebar\offsidebar.component.html" />
+    <Content Include="app\layout\sidebar\sidebar.component.html" />
+    <Content Include="app\layout\sidebar\userblock\userblock.component.html" />
+    <Content Include="app\routes\eventCategory\eventCategory-grid.component.html" />
+    <Content Include="app\routes\eventCategory\eventCategory.component.html" />
+    <Content Include="app\routes\eventCategory\eventCategory.component.css" />
+    <Content Include="app\routes\eventsDashboard\eventDashboard.component.css" />
+    <Content Include="app\routes\eventsDashboard\eventsDashboard-grid.component.html" />
+    <Content Include="app\routes\eventsDashboard\eventsDashboard.component.html" />
+    <Content Include="app\routes\event\carousel.component.html" />
+    <Content Include="app\routes\event\event.component.css" />
+    <Content Include="app\routes\event\event.component.html" />
+    <Content Include="app\routes\event\upload.component.html" />
+    <Content Include="app\routes\fbo\fbo.component.css" />
+    <Content Include="app\routes\fbo\fbo.component.html" />
+    <Content Include="app\routes\home\calendar\calendar.component.html" />
+    <Content Include="app\routes\home\home\home.component.css" />
+    <Content Include="app\routes\home\home\home.component.html" />
+    <Content Include="app\routes\location\location.component.css" />
+    <Content Include="app\routes\location\location.component.html" />
+    <Content Include="app\routes\message\message.component.css" />
+    <Content Include="app\routes\message\message.component.html" />
+    <Content Include="app\routes\message\viewMessage\viewMessage-grid.component.html" />
+    <Content Include="app\routes\message\viewMessage\viewMessage.component.css" />
+    <Content Include="app\routes\message\viewMessage\viewMessage.component.html" />
+    <Content Include="app\shared\components\datepicker\datepicker.component.html" />
+    <Content Include="app\shared\filter-textbox\filter-textbox.component.css" />
+    <Content Include="app\shared\filter-textbox\filter-textbox.component.html" />
+    <Content Include="assets\img\base_aviation_bg.jpg" />
+    <Content Include="assets\img\header\BlueIMG.png" />
+    <Content Include="assets\img\header\CityScape.png" />
+    <Content Include="assets\img\header\plane.png" />
+    <Content Include="assets\img\header\Windows.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\NBAA3_756x475_f.jpg" />
+    <Content Include="assets\img\NBAA4_756x475_f.jpg" />
+    <Content Include="assets\img\NBAA7_756x475_f.jpg" />
+    <Content Include="assets\img\phillips-66-single.png" />
+    <Content Include="assets\img\phillips-66.png" />
+    <Content Include="assets\img\preloader\preloader.empty.png" />
+    <Content Include="assets\img\preloader\preloader.full.png" />
+    <Content Include="assets\img\momentum.png" />
+    <Content Include="assets\img\Sun_n_Fun_756x475_f.jpg" />
+    <Content Include="configs\webpack.development.js" />
+    <Content Include="configs\webpack.production.js" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="index.webpack.html" />
+    <Content Include="styles\2fe2efe63441d830b1acd106c1fe8734.svg" />
+    <Content Include="styles\912ec66d7572ff821749319396470bde.svg" />
+    <Content Include="styles\kendo-all.css" />
+    <Content Include="styles\ng2-toastr.css" />
+    <Content Include="styles\styles.bundle.css" />
+    <Content Include="styles\styles.css" />
+    <Content Include="systemjs.config.js" />
+    <Content Include="transform.prod.xml" />
+    <Content Include="transform.test.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\AirportController.cs" />
+    <Compile Include="Controllers\Api\NotificationTagController.cs" />
+    <Compile Include="Controllers\Api\MessageController.cs" />
+    <Compile Include="Controllers\Api\FboLocatorController.cs" />
+    <Compile Include="Controllers\Api\UserController.cs" />
+    <Compile Include="Controllers\Api\EventCategoryController.cs" />
+    <Compile Include="Controllers\Api\EventController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\SecurityService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\core\menu\menu.service.ts" />
+    <TypeScriptCompile Include="app\core\preloader\preloader.ts" />
+    <TypeScriptCompile Include="app\core\settings\settings.service.ts" />
+    <TypeScriptCompile Include="app\core\themes\themes.service.ts" />
+    <TypeScriptCompile Include="app\data\dataservices.module.ts" />
+    <TypeScriptCompile Include="app\data\services\location.service.ts" />
+    <TypeScriptCompile Include="app\data\services\notificationTag.service.ts" />
+    <TypeScriptCompile Include="app\data\services\message.service.ts" />
+    <TypeScriptCompile Include="app\routes\event\carousel.component.ts" />
+    <TypeScriptCompile Include="app\routes\fbo\fbo.component.ts" />
+    <TypeScriptCompile Include="app\routes\fbo\fbo.module.ts" />
+    <TypeScriptCompile Include="app\routes\location\location.component.ts" />
+    <TypeScriptCompile Include="app\routes\location\location.module.ts" />
+    <TypeScriptCompile Include="app\routes\message\viewMessage\viewMessage-grid.component.ts" />
+    <TypeScriptCompile Include="app\routes\message\viewMessage\viewMessage.component.ts" />
+    <TypeScriptCompile Include="app\shared\pipes\datem.pipe.ts" />
+    <TypeScriptCompile Include="app\shared\services\toastr.service.ts" />
+    <TypeScriptCompile Include="app\data\services\user.service.ts" />
+    <TypeScriptCompile Include="app\data\services\eventCategory.service.ts" />
+    <TypeScriptCompile Include="app\data\services\event.service.ts" />
+    <TypeScriptCompile Include="app\layout\footer\footer.component.ts" />
+    <TypeScriptCompile Include="app\layout\header\header.component.ts" />
+    <TypeScriptCompile Include="app\layout\header\navsearch\navsearch.component.ts" />
+    <TypeScriptCompile Include="app\layout\layout.component.ts" />
+    <TypeScriptCompile Include="app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="app\layout\offsidebar\offsidebar.component.ts" />
+    <TypeScriptCompile Include="app\layout\sidebar\sidebar.component.ts" />
+    <TypeScriptCompile Include="app\layout\sidebar\userblock\userblock.component.ts" />
+    <TypeScriptCompile Include="app\layout\sidebar\userblock\userblock.service.ts" />
+    <TypeScriptCompile Include="app\polyfills.ts" />
+    <TypeScriptCompile Include="app\reactive-extensions.ts" />
+    <TypeScriptCompile Include="app\routes\eventCategory\eventCategory-grid.component.ts" />
+    <TypeScriptCompile Include="app\routes\eventCategory\eventCategory.component.ts" />
+    <TypeScriptCompile Include="app\routes\eventCategory\eventCategory.module.ts" />
+    <TypeScriptCompile Include="app\routes\eventsDashboard\eventsDashboard-grid.component.ts" />
+    <TypeScriptCompile Include="app\routes\eventsDashboard\eventsDashboard.component.ts" />
+    <TypeScriptCompile Include="app\routes\eventsDashboard\eventsDashboard.module.ts" />
+    <TypeScriptCompile Include="app\routes\event\upload.component.ts" />
+    <TypeScriptCompile Include="app\routes\home\calendar\calendar.component.ts" />
+    <TypeScriptCompile Include="app\routes\home\home.module.ts" />
+    <TypeScriptCompile Include="app\routes\home\home\home.component.ts" />
+    <TypeScriptCompile Include="app\routes\event\event.component.ts" />
+    <TypeScriptCompile Include="app\routes\event\event.module.ts" />
+    <TypeScriptCompile Include="app\routes\menu.ts" />
+    <TypeScriptCompile Include="app\routes\message\message.component.ts" />
+    <TypeScriptCompile Include="app\routes\message\message.module.ts" />
+    <TypeScriptCompile Include="app\routes\routes.module.ts" />
+    <TypeScriptCompile Include="app\shared\colors\colors.service.ts" />
+    <TypeScriptCompile Include="app\shared\components\datepicker\datepicker.component.ts" />
+    <TypeScriptCompile Include="app\shared\directives\checkall\checkall.directive.ts" />
+    <TypeScriptCompile Include="app\shared\directives\easypiechart\easypiechart.directive.ts" />
+    <TypeScriptCompile Include="app\shared\directives\flot\flot.directive.ts" />
+    <TypeScriptCompile Include="app\shared\directives\jqcloud\jqcloud.directive.ts" />
+    <TypeScriptCompile Include="app\shared\directives\now\now.directive.ts" />
+    <TypeScriptCompile Include="app\shared\directives\scrollable\scrollable.directive.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\core\core.module.ts" />
+    <TypeScriptCompile Include="app\core\module-import-guard.ts" />
+    <TypeScriptCompile Include="app\core\services\dialog.service.ts" />
+    <TypeScriptCompile Include="app\core\services\filter.service.ts" />
+    <TypeScriptCompile Include="app\core\services\property-resolver.ts" />
+    <TypeScriptCompile Include="app\core\services\sorter.service.ts" />
+    <TypeScriptCompile Include="app\core\services\trackby.service.ts" />
+    <TypeScriptCompile Include="app\core\services\validation.service.ts" />
+    <TypeScriptCompile Include="app\core\strategies\preload-modules.strategy.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\shared\directives\sortby.directive.ts" />
+    <TypeScriptCompile Include="app\shared\filter-textbox\filter-textbox.component.ts" />
+    <TypeScriptCompile Include="app\shared\filter-textbox\filter-textbox.module.ts" />
+    <TypeScriptCompile Include="app\shared\interfaces\models.ts" />
+    <TypeScriptCompile Include="app\shared\pipes\capitalize.pipe.ts" />
+    <TypeScriptCompile Include="app\shared\pipes\trim.pipe.ts" />
+    <TypeScriptCompile Include="app\shared\router.animations.ts" />
+    <TypeScriptCompile Include="app\shared\services\property-resolver.ts" />
+    <TypeScriptCompile Include="app\shared\services\sorter.service.ts" />
+    <TypeScriptCompile Include="app\shared\services\spinner.component.ts" />
+    <TypeScriptCompile Include="app\shared\services\spinner.service.ts" />
+    <TypeScriptCompile Include="app\shared\shared.module.ts" />
+    <TypeScriptCompile Include="app\typings.d.ts" />
+    <TypeScriptCompile Include="app\vendor.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\core\preloader\preloader.scss" />
+    <Content Include="styles\674f50d287a8c48dc19ba404d20fe713.eot" />
+    <Content Include="styles\78f07e2c2a535c26ef21d95e41bd7175.woff" />
+    <Content Include="styles\af7ae505a9eed503f8b8e6982036873e.woff2" />
+    <Content Include="styles\b06871f281fee6b241d60582ae9369b9.ttf" />
+    <Content Include="styles\d2285965fe34b05465047401b8595dd0.ttf" />
+    <Content Include="styles\f33df365d6d0255b586f2920355e94d7.eot" />
+    <Content Include="styles\fee66e712a8a08eef5805a46892932ad.woff" />
+    <Content Include="styles\0cb0b9c589c0624c9c78dd3d83e946f6.woff2" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="app\routes\event\upload.component.scss" />
+    <Content Include="package.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tsconfig-aot.json" />
+    <Content Include="tsconfig-jit.json" />
+    <Content Include="tslint.json" />
+    <Content Include=".npmrc" />
+    <Content Include="styles\Whitney-Light.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventsPromotions.Interfaces\EventsPromotions.Interfaces.csproj">
+      <Project>{0e0efbfa-c045-4c88-aee6-19f607a49e0d}</Project>
+      <Name>EventsPromotions.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventsPromotions.Models\EventsPromotions.Models.csproj">
+      <Project>{1afa9d9e-0cef-45fd-9ddf-60852d62d8ef}</Project>
+      <Name>EventsPromotions.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventsPromotions.Proxy\EventsPromotions.Proxy.csproj">
+      <Project>{274bcac2-241e-47bd-b5d9-84d23a335ba0}</Project>
+      <Name>EventsPromotions.Proxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventsPromotions.Services\EventsPromotions.Services.csproj">
+      <Project>{2c3ec888-4314-4382-a062-48f166fd3f96}</Project>
+      <Name>EventsPromotions.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventsPromotions\EventsPromotions.Common.csproj">
+      <Project>{c9d34825-19ac-4e1e-beb5-e0fc6ddf86d0}</Project>
+      <Name>EventsPromotions.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\routes\locationDetail\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>33810</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/EventsPromotions.Web</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.Node.0.5.1\build\MSBuild.Node.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Node.0.5.1\build\MSBuild.Node.props'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.Node.0.5.1\build\MSBuild.Node.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Node.0.5.1\build\MSBuild.Node.targets'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.Npm.0.5.1\build\MSBuild.Npm.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Npm.0.5.1\build\MSBuild.Npm.props'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.Npm.0.5.1\build\MSBuild.Npm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Npm.0.5.1\build\MSBuild.Npm.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.1.4\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <!--<PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)node_modules\*.*" "$(TargetDir)_PublishedWebsites\EventsPromotions.Web\node_modules\" /s /e</PostBuildEvent>
+  </PropertyGroup>-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+
+  -->
+</Project>

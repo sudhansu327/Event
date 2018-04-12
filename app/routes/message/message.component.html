@@ -1,0 +1,370 @@
+﻿<div class="content-heading">
+    {{title}}
+    <small>{{subtitle}}</small>
+</div>
+<div class="container  col-md-12">
+<div class="panel">
+<form name="formMessage" class="form-horizontal" #bookForm="ngForm" novalidate>
+<tabset justified="true">
+<tab>
+    <template tabHeading>
+        <em class="fa fa-group fa-fw"></em>Audience
+    </template>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="form-group">
+                        <label>Who will receive your message?</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="radio" required tabindex="1" [(ngModel)]="message.Audience" name="AudienceRadioBtn" (change)="onAudienceChange()" value="all"/> <label>All Devices</label>
+                </div>
+                <div class="row">
+                    <input type="radio" required tabindex="2" [(ngModel)]="message.Audience" name="AudienceRadioBtn" (change)="onAudienceChange()" value="specificUsers"/><label>Target Specific Users </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div *ngIf="message.Audience === 'specificUsers'">
+            <div class="row">
+                <div class="col-md-6">
+                    <label><em class="fa fa-search fa-fw"></em> SEARCH</label>
+                    <!--<tag-input [(ngModel)]="message.selectedTags" name="tags" placeholder="Add Tags" onlyFromAutocomplete="false"
+                                     theme='bootstrap'>
+                        <tag-input-dropdown [showDropdownIfEmpty]="true"
+                                             [autocompleteItems]="locationList"
+                                             [identifyBy]="'LocationId'"
+                                             [displayBy]="'LocationName'">
+                        </tag-input-dropdown>
+                    </tag-input>-->
+                    <kendo-multiselect [data]="filterData"
+                                        name="Tags"
+                                        [(ngModel)]="selectedLocation"
+                                        [textField]="'LocationNameAirportCode'"
+                                        [valueField]="'LocationId'"
+                                        [filterable]="true"
+                                        (filterChange)="filterChange($event)"
+                                        [disabled]="false"
+                                        required>
+                    </kendo-multiselect>
+
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+</tab>
+
+<tab>
+    <template tabHeading>
+        <em class="fa fa-book fa-fw"></em>Content
+    </template>
+    <div>
+        <div class="row">
+            <div class="form-group">
+                <label>What type of message is this?</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+
+                            <div class="col-xs-10 text-left">
+                                <div class="m0">Push Notification</div>
+                                <p class="m0">Appears on your device outside your app or website.</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="radio" required [(ngModel)]="message.NotificationType" name="NotificationRadioBtn" value="Push"/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-10 text-left">
+                                <div class="m0">In-App Message</div>
+                                <p class="m0">Appears when your user opens your app.</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="radio" required [(ngModel)]="message.NotificationType" name="NotificationRadioBtn" value="InApp"/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <label> Notification Message:</label>
+                <textarea class="form-control" rows="3" [(ngModel)]="message.PushNotificationText" required name="PushNotificationText" placeholder="Enter Notification text"></textarea>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                <label>Message Action:</label>
+                <div class="horizontal-space3">
+                    <kendo-combobox [data]="messageActionList"
+                                     [textField]="'ActionName'"
+                                     [valueField]="'ActionId'"
+                                     [placeholder]="'Select Message Action'"
+                                     [(ngModel)]="message.MessageAction"
+                                     (selectionChange)="onMessageActionChange($event)"
+                                     name="msgAction">
+                    </kendo-combobox> {{actionDescription}}
+                </div>
+            </div>
+        </div>
+    </div>
+</tab>
+<tab>
+    <template tabHeading>
+        <em class="fa fa-briefcase fa-fw"></em>Delivery
+
+    </template>
+
+    <div>
+        <div class="row">
+                <label>When will your message be sent?</label>
+        </div>
+        <div class="row">
+            <input type="radio" required tabindex="1" [(ngModel)]="message.MessageSendTime" (change)="onMessageSentChange();" name="messageTimeRadioBtn" value="Now"/> <label>Send Now</label>
+        </div>
+        <div class="row">
+            <input type="radio" required tabindex="2" [(ngModel)]="message.MessageSendTime" (change)="onMessageSentChange();" name="messageTimeRadioBtn" value="SpecificDateandTime"/><label>Send at a Specific Date and Time</label>
+        </div>
+        <div class="row">
+            <div *ngIf="message.MessageSendTime==='SpecificDateandTime'" class="col-md-8">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <strong>Scheduled delivery date and time must be in the future.</strong>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label class="control-label  pull-left">DATE:</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <kendo-datepicker [(ngModel)]="message.MessageScheduledDate" name="scheduledDt"></kendo-datepicker>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label class="control-label  pull-left">TIME:</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <timepicker [(ngModel)]="message.MessageScheduledDate" name="scheduledTime"></timepicker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label>Do you want to set any of these options?</label>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <label>Expiration Reattempts Notification delivery for specified duration</label>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="switch">
+                                    <input type="checkbox" tabindex="4" name="expirationCheckNm" [(ngModel)]="message.ExpirationCheck" class="form-control"/><span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div *ngIf="message.ExpirationCheck">
+                            <div class="left-padding form-group" >
+                                <input type="radio" required tabindex="3" [(ngModel)]="message.Duration" (change)="onDurationChange();" name="durationRadioBtn" value="Duration"/>Duration &nbsp;
+                                <input type="radio" required tabindex="4" [(ngModel)]="message.Duration" (change)="onDurationChange();" name="durationRadioBtn" value="DateTime"/>Date & Time
+                            </div>
+                            <div *ngIf="message.Duration==='Duration'" class="form-group">
+                                <div class="input-group">
+                                    <div class="col-md-5">
+                                        <input class="form-control" type="text" required [(ngModel)]="message.ExpirationDurationQuantity" name="duration" placeholder="Duration"/>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <select class="form-control" required [(ngModel)]='message.ExpirationDurationType' name="ddlMessageDuration">
+                                            <option value="0">Minutes</option>
+                                            <option value="1">Hours</option>
+                                            <option value="2">Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="message.Duration==='DateTime'" class="form-group">
+                                <div class="form-horizontal">
+                                    <div class="left-padding2 form-group">
+                                        <div class="col-sm-3">
+                                            <label class="control-label  pull-left">DATE:</label>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <kendo-datepicker [(ngModel)]="message.MessageExpirationDate" name="expirationDt"></kendo-datepicker>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal">
+                                    <div class="left-padding2 form-group">
+                                        <div class="col-sm-3">
+                                            <label class="control-label  pull-left">TIME:</label>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <timepicker [(ngModel)]="message.MessageExpirationDate" name="expirationTime"></timepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</tab>
+<tab>
+    <template tabHeading>
+        <em class="fa fa-comments fa-fw"></em>Review
+    </template>
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Audience</div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">TYPE:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>{{message.Audience==='all'?'All Devices':message.Audience==='specificUsers'?'Specific Device':''}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="message.Audience==='specificUsers'" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">SELECTED LOCATIONS:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <ul>
+                                <li *ngFor="let location of selectedLocation">
+                                    {{location.LocationName}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Content</div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">MESSAGE TYPE:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>{{message.NotificationType}} Notification</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">MESSAGE:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>{{message.PushNotificationText}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">MESSAGE ACTION:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>{{message.SelectedMessageAction}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Delivery</div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+
+                    <div *ngIf="message.MessageSendTime==='Now'" class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">SEND NOW:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>Send immediately after confirmation.</label>
+                        </div>
+                    </div>
+                    <div *ngIf="message.MessageSendTime==='SpecificDateandTime'" class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">SCHEDULED:</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>{{message.MessageScheduledDate | datem:'MM/DD/YYYY hh:mm A'}}</label>
+
+                        </div>
+                    </div>
+                    <div *ngIf="message.ExpirationCheck" class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label  pull-left">EXPIRATION:</label>
+                        </div>
+                        <div *ngIf="message.Duration==='Duration'" class="col-sm-5">
+                            <label>{{message.ExpirationDurationQuantity}} {{message.ExpirationDurationType=='0'?'Minutes':message.ExpirationDurationType=='1'?'Hours':message.ExpirationDurationType=='2'?'Days':''}}</label>
+                        </div>
+                        <div *ngIf="message.Duration==='DateTime'" class="col-sm-5">
+                            <label>{{message.MessageExpirationDate | date:'MM/dd/yy hh:mm a'}} </label>
+                        </div>
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="col-md-12">
+                            <button class="btn btn-info btn-sm pull-right" (click)="addMessage('Draft')">Save Draft</button>
+                            <div class="col-md-11">
+                                <div *ngIf="message.MessageSendTime==='Now'">
+                                    <button [disabled]="!(bookForm.form.valid && (message.ExpirationCheck===false || message.Duration===''||message.Duration==='Duration'||message.MessageExpirationDate >currentDate))" class="btn btn-success btn-sm pull-right" (click)="addMessage('History')">Send Message</button>
+                                </div>
+                                <div *ngIf="message.MessageSendTime==='SpecificDateandTime'">
+                                    <button [disabled]="!(bookForm.form.valid && (message.MessageScheduledDate>currentDate) && (message.ExpirationCheck===false || message.Duration===''||message.Duration==='Duration'||message.MessageExpirationDate >currentDate))" class="btn btn-success btn-sm pull-right" (click)="addMessage('Scheduled')">Schedule Message</button>&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</tab>
+</tabset>
+</form>
+</div>
+</div>

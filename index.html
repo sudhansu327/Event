@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--<base href="~">-->
+    <base href="/">
+    <title>Events Promotions</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="styles/kendo-all.css" rel="stylesheet" />
+    <link href="styles/styles.bundle.css" rel="stylesheet"/>
+    <link href="styles/styles.css" rel="stylesheet"/>
+    <link href="styles/ng2-toastr.css" rel="stylesheet"/>
+    <link href="node_modules/fullcalendar/dist/fullcalendar.css" rel="stylesheet"/>
+    <link href="node_modules/toastr/build/toastr.min.css" rel="stylesheet" />
+    <!--need for Toastr-->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/toastr/build/toastr.min.js"></script>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+        // At this moment we assume that the application will always be hosted on a Virtual Directory in IIS.
+        // If the applicaiton is run without a virtual directory, comment the following code block and update the <base href=""> to <base href="/">
+        // This is a temproray work around and needs to be further looked into.
+        //(function () {
+        //    var base = document.querySelector("base");
+        //    base.href = '/' + window.location.pathname.split('/')[1] + '/';
+        //})();
+        /*******************************************/
+
+        // Use SystemJs to load the CommonJs modules recursively and in correct order of dependency.
+        System.import('app').catch(function (err) { console.error(err); });
+    </script>
+</head>
+<body>
+<app-layout>
+  Loading...
+</app-layout>
+
+</body>
+</html>

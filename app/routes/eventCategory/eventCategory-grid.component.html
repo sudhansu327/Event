@@ -1,0 +1,54 @@
+﻿<div *ngIf="loading == true" class="loader">Loading..</div>
+<div *ngIf="loading == false">
+    <!--<div class="panel panel-default">
+        <div class="panel-body">-->
+            <kendo-grid [kendoGridBinding]="eventCategories"
+                        [height]="500"
+                        [skip]="state.skip"
+                        [pageSize]="state.take"
+                        [pageable]="true"
+                        [sortable]="true"
+                        [sort]="state.sort"
+                        (edit)="editHandler($event)"
+                        (cancel)="cancelHandler($event)"
+                        (save)="saveHandler($event)"
+                        (remove)="removeHandler($event)"
+                        (add)="addHandler($event)"
+                        (valueChange)="sliderChange($event)">
+                <kendo-grid-toolbar>
+                    <div class="col-md-3">
+                        <button kendoGridAddCommand class="btn btn-green k-button k-grid-add-command">Add New</button>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="pull-right">
+                            <div class="pull-left vertical-space3">Page Size: &nbsp;</div>
+                            <select [(ngModel)]="state.take" class="form-control input-sm pull-left width65">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </kendo-grid-toolbar>
+
+                <kendo-grid-column field="EventCategoryName" title="Category Name"></kendo-grid-column>
+
+
+                <kendo-grid-command-column title="Actions" width="220">
+                    <template let-isNew="isNew">
+                        <!-- edit command directive, will be visible when not in edit mode -->
+                        <button kendoGridEditCommand class="btn btn-success btn-outline">Edit</button>
+                        <!-- remove command directive, will be visible when not in edit mode -->
+                        <button kendoGridRemoveCommand class="btn btn-danger btn-outline">Delete</button>
+                        <!-- save command directive, will be visible when in edit mode -->
+                        <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+                        <!-- cancel command directive, will be visible when in edit mode -->
+                        <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+                    </template>
+                </kendo-grid-command-column>
+
+            </kendo-grid>
+        <!--</div>
+    </div>-->
+</div>

@@ -1,0 +1,128 @@
+﻿<div *ngIf="loading == true" class="loader">Loading..</div>
+<div *ngIf="loading == false">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="horizontal-space3">
+                        <!--<div class="col-md-12">-->
+                        <div class="col form-group">
+                            <label>Start Date</label>
+                            <div class="horizontal-space3">
+                                <kendo-datepicker [(value)]="startDate" 
+                                                  (valueChange)="onFromDateChange($event)">
+                                </kendo-datepicker>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label>End Date</label>
+                            <div  class="horizontal-space3">
+                                <kendo-datepicker [(value)]="endDate" 
+                                                  (valueChange)="onToDateChange($event)">
+                                </kendo-datepicker>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label>Content Type</label>
+                            <div class="horizontal-space3">
+                                <kendo-combobox 
+                                                [data]="contentTypesList"
+                                                [textField]="'ContentTypeName'"
+                                                [valueField]="'ContentTypeName'"
+                                                [placeholder]="'Select Content Type'"
+                                                (selectionChange)="onContentTypeChange($event)">
+                                </kendo-combobox>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label>Location</label>
+                            <div class="horizontal-space3">
+                                <kendo-combobox [data]="locationList"
+                                                [textField]="'LocationNameAirportCode'"
+                                                [valueField]="'LocationId'"
+                                                [placeholder]="'Select Location'"
+                                                [value]="selectedLocation"
+                                                [filterable]="true"
+                                                (filterChange)="locationFilter($event)"
+                                                (selectionChange)="locationSelection($event)">
+                                </kendo-combobox>
+                            </div>
+                        </div>
+                        <div class="col" style="width: 100%">
+                            <div class="horizontal-space5">
+                                <cm-filter-textbox style="padding: 0" class="col-md-12 navbar-left" (changed)="filterChanged($event)"></cm-filter-textbox>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label></label>
+                            <div class="vertical-space6">
+                                <button class="btn btn-sm btn-primary" (click)="resetEventData()"><i class="fa fa-refresh"></i> Reset</button>
+                            </div>
+                        </div>
+
+                       
+                </div>
+            </div>
+
+
+                <!--<div class="panel panel-default">
+                    <div class="panel-body">-->
+                        <kendo-grid [kendoGridBinding]="filteredEvents"
+                                    [height]="500"
+                                    [skip]="state.skip"
+                                    [pageSize]="state.take"
+                                    [pageable]="true"
+                                    [sortable]="true"
+                                    [sort]="state.sort"
+                                    (edit)="editHandler($event)"
+                                     (remove)="removeHandler($event)"
+                                    (add)="addHandler($event)"
+                                    (valueChange)="sliderChange($event)">
+                            <kendo-grid-toolbar>
+                                <div class="col-md-3 pull-left">
+                                    <button kendoGridAddCommand class="btn btn-green k-button k-grid-add-command">Add New</button>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="pull-right">
+                                        <div class="pull-left vertical-space5">Page Size: &nbsp;</div>
+                                        <select [(ngModel)]="state.take" class="form-control input-sm pull-left width65">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </kendo-grid-toolbar>
+
+                            <kendo-grid-column field="Title" title="Event Title"></kendo-grid-column>
+                            <kendo-grid-column field="SubTitle" title="Event Subtitle"></kendo-grid-column>
+                            <kendo-grid-column field="EventFromDate" title="Start Date" format="{0:MM/dd/yyyy}">
+
+                            </kendo-grid-column>
+                            <kendo-grid-column field="EventToDate" title="End Date" format="{0:MM/dd/yyyy}"></kendo-grid-column>
+                            <kendo-grid-column field="EventCategoryName" title="Event Category"></kendo-grid-column>
+                            <kendo-grid-column field="ContentType" title="Event Type"></kendo-grid-column>
+                            <kendo-grid-command-column title="Action" width="200">
+                                <template let-isNew="isNew">
+                                    <button kendoGridEditCommand class="btn btn-xs btn-outline btn-green"><i class="fa fa-pencil"></i> Edit</button>
+                                    <button kendoGridRemoveCommand class="btn btn-xs btn-outline btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                </template>
+                            </kendo-grid-command-column>
+                        </kendo-grid>
+                        <!--<div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label class="control-label  pull-left">TYPE:</label>
+                    </div>
+                    <div class="col-sm-5">
+                        <label>{{message.Audience==='all'?'All Devices':message.Audience==='specificUsers'?'Specific Device':''}}</label>
+                    </div>
+                </div>
+
+            </div>-->
+                    </div>
+                </div>            
+        <!--</div>
+    </div>-->
+</div>

@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                Thumbnail Image (100 x 100 pixels)
+                <br />
+                <label for="file1" class="file-upload">
+                    <input id="file2" type="file" ng2FileSelect [uploader]="uploaderThumbnl"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">Attachment</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploaderThumbnl.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td nowrap>
+                            <!--<button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">-->
+                            <button type="button" class="btn btn-danger btn-xs" (click)="removeThmbnlItemFromQueue(item)">
+                                <span class="icon-trash mr"></span> Remove
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+                <button type="button" class="btn btn-info btn-s" (click)="uploaderThumbnl.uploadAll()" [disabled]="!uploaderThumbnl.getNotUploadedItems().length">
+                    <span class="fa icon-cloud-upload mr"></span> Upload
+                </button>
+                <!--<button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="icon-trash mr"></span> Remove
+                </button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                Detail Image (400 x 400 pixels)
+                <br/>
+                <label for="file1" class="file-upload">
+                    <input id="file1" type="file" ng2FileSelect [uploader]="uploader" multiple/>
+                </label>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">Attachment</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploader.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td nowrap>
+                            <!--<button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">-->
+                            <button type="button" class="btn btn-danger btn-xs" (click)="removeItemFromQueue(item)">
+                                <span class="icon-trash mr"></span> Remove
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+                <button type="button" class="btn btn-info btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="fa icon-cloud-upload mr"></span> Upload all
+                </button>
+                <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="icon-trash mr"></span> Remove all
+                </button>
+            </div>
+            </div>
+        </div>
+</div>
+<!--<p><small>See implementation details <a href="http://valor-software.com/ng2-file-upload/">here</a></small></p>-->

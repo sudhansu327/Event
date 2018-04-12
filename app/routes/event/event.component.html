@@ -1,0 +1,363 @@
+﻿<div class="content-heading">
+    {{title}}
+    <small>{{subtitle}}</small>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-transparent">
+            <form name="formEvent" class="form-horizontal" #bookForm="ngForm" novalidate>
+                <tabset justified="true">
+                    <tab>
+                        <template tabHeading>
+                            <em class="fa fa-pencil-square-o fa-fw"></em>Input Fields
+                        </template>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-6"><span><strong>Fields marked as <span class="required">*</span> are required </strong></span></div>
+                                <div class="col-md-6">
+                                    <div class="pull-right">
+                                        <button class="btn btn-sm" tabindex="12" (click)="onBackClick()">Back <i class="fa fa-arrow-left"></i></button>
+                                        <button class="btn btn-primary btn-sm" tabindex="14" (click)="resetEventData()">Reset&nbsp;<i class="fa fa-refresh"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Title:<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" required [(ngModel)]="event.Title" name="eventTitle" placeholder="Enter title" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Sub Title:<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" required [(ngModel)]="event.SubTitle" name="eventSubTitle" placeholder="Enter sub title" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3">Detail Title:</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" [(ngModel)]="event.DetailTitle" name="detailTitle" placeholder="Enter detail title" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Summary Description:</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" rows="3" [(ngModel)]="event.SummaryDescription" name="summaryDescription" placeholder="Enter summary description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Detail Description:<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" rows="3" required [(ngModel)]="event.DetailDescription" name="detailDescription" placeholder="Enter detail description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3">Notification Message:</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" [(ngModel)]="event.NotificationMessage" name="NotificationMessage" placeholder="Enter Notification message" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Event Location:</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" [(ngModel)]="event.EventLocation" name="eventLocation" placeholder="Enter event location"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Content Type:<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <label class="radio-inline c-radio">
+                                        <input type="radio" name="eventRadioBtn" id="eventRadioBtn" required value="Event" [(ngModel)]="event.ContentType"/>
+                                        <span class="fa fa-circle"></span>Event
+                                    </label>
+                                    <label class="radio-inline c-radio">
+                                        <input type="radio" name="eventRadioBtn" required value="Promotion" id="promotionRadioBtn" [(ngModel)]="event.ContentType"/>
+                                        <span class="fa fa-circle"></span>Promotion
+                                    </label>
+                                </div>
+                            </div>
+                            <div *ngIf="event.ContentType==='Promotion'" class="form-group">
+                                <label class="control-label col-sm-3">Terms and conditions:</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" [(ngModel)]="event.TermsandConditions" name="termsAndConditions" placeholder="Enter Terms and conditions " />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Display Event Date on APP?:</label>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <label class="switch">
+                                                <input type="checkbox" tabindex="10" name="disEvntDt1" [(ngModel)]="event.DisplayEventDate" class="form-control" /><span></span>
+                                            </label>
+                                        </div>
+                                        <label class="control-label col-sm-3">Display Countdown on APP?:</label>
+                                        <div class="col-sm-2">
+                                            <label class="switch">
+                                                <input type="checkbox" tabindex="11" name="disCntDwn" [(ngModel)]="event.DisplayCountdown" class="form-control" /><span></span>
+                                            </label>
+                                        </div>
+                                        <label class="control-label col-sm-3">Render on Home Screen?:</label>
+                                        <div class="col-sm-2">
+                                            <label class="switch">
+                                                <input type="checkbox" tabindex="5" name="renderOnHomeScreen" [(ngModel)]="event.RenderOnHomeScreen" class="form-control" /><span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">More Info Text:</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" [(ngModel)]="event.MoreInfoText" name="moreInfoText" placeholder="Enter more info text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">More Info Url:</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" [(ngModel)]="event.MoreInfoUrl" name="moreInfoUrl" placeholder="Enter more info url" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Active Dates:<span class="required">*</span></label>
+                                <div class="col-sm-9">
+                                    <table>
+                                        <tr>
+                                            <td><label>From</label></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td><label>To</label></td>
+
+                                        </tr>
+                                        <tr>
+                                            <!--<td><cm-datepicker [dateModel]="event.ActiveDateFrom" (dateModelChange)="onActiveFromDateChange($event)"></cm-datepicker></td>-->
+                                            <kendo-datepicker [(ngModel)]="event.ActiveDateFrom" name="activeFrmDt"></kendo-datepicker>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <!--<td><cm-datepicker [dateModel]="event.ActiveDateTo" (dateModelChange)="onActiveToDateChange($event)"></cm-datepicker></td>-->
+                                            <kendo-datepicker [(ngModel)]="event.ActiveDateTo" name="activeToDt"></kendo-datepicker>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Event Dates:<span *ngIf="(event.Airports && event.Airports.length>0)" class="required">*</span></label>
+                                <div class="col-md-9">
+                                    <table>
+                                        <tr>
+                                            <td><label>From</label></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td><label>To</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <!--<cm-datepicker [dateModel]="event.EventFromDate" (dateModelChange)="onEventFromDateChange($event)"></cm-datepicker>-->
+                                                <kendo-datepicker [(ngModel)]="event.EventFromDate" name="eventFrmDt"></kendo-datepicker>
+                                            </td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <!--<cm-datepicker [dateModel]="event.EventToDate" (dateModelChange)="onEventToDateChange($event)"></cm-datepicker>-->
+                                                <kendo-datepicker [(ngModel)]="event.EventToDate" name="eventToDt"></kendo-datepicker>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Categories:<span class="required">*</span></label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" ngClass="ng-invalid" [(ngModel)]='event.EventCategoryId' name="ddlCategory">
+                                        <option disabled value="0" class="hideoption">--Select a Category--</option>
+                                        <option *ngFor="let category of categories" [ngValue]="category.EventCategoryId">
+                                            {{category.EventCategoryName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">P66/General Content:</label>
+                                <div class="col-md-9">
+                                    <input type="checkbox" tabindex="12" [disabled]="true" [checked]="!(selectedLocations && selectedLocations.length>0)" name="genContent" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Location Specific?:</label>
+                                <div class="col-sm-9">
+                                    <kendo-multiselect [data]="filterData"
+                                                        name="Tags"
+                                                        [(ngModel)]="selectedLocation"
+                                                        [textField]="'LocationNameAirportCode'"
+                                                        [valueField]="'LocationId'"
+                                                        [filterable]="true"
+                                                       (filterChange)="filterChange($event)"
+                                                        [disabled]="false">
+                                    </kendo-multiselect>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="pull-right">
+                                        <button class="btn btn-success btn-sm" [disabled]="!(bookForm.form.valid && event.EventCategoryId>0)" tabindex="13" (click)="validateImageUpload()">Save <i class="fa fa-save"></i></button>&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab>
+                        <template tabHeading>
+                            <em class="fa fa-file-image-o fa-fw"></em>Attachments
+                        </template>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <h4 class="p-header">Select files to upload</h4>
+                                        <app-upload></app-upload>
+                                        <div class="pull-right">
+                                            <button class="btn btn-sm" tabindex="12" (click)="onBackClick()">Back <i class="fa fa-arrow-left"></i></button>
+                                            <button class="btn btn-success btn-sm"
+                                                    [disabled]="!((bookForm.form.valid && event.EventCategoryId>0) && (uploadComponent.imageList.length>0 || existingDetailImgCount > 0) && (existingThumbnailImgCount>0 || uploadComponent.thmbnlImg !=null))"
+                                                    tabindex="13" (click)="saveEvent()">Save <i class="fa fa-save"></i></button>&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-7">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <h4 class="p-header">Uploaded files<small> (Click on thumbnails to view detail images)</small></h4>
+                                        <div *ngIf="event.EventImages.length>0">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Thumbnail</th>
+                                                        <th>File Name</th>
+                                                        <th>Image Type</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!---->
+                                                    <tr *ngFor="let data of event.EventImages ">
+                                                        <td *ngIf="data.AssocEventImageId>0" class="col-md-1">
+                                                            <a href="#" target="_blank">
+                                                                <img src="data:image/jpeg;base64,{{data.Image}}" (click)="clickThumbnail(data)" title="Click to view detail image" border="2" width="40" height="40" hspace="10" />
+                                                            </a>
+                                                        </td>
+                                                        <td *ngIf="data.AssocEventImageId>0" class="col-md-5">
+                                                            {{data.ImageName}}
+                                                        </td>
+                                                        <td *ngIf="data.AssocEventImageId>0" class="col-md-5">
+                                                            {{data.ImageType}}
+                                                        </td>
+                                                        <td *ngIf="data.AssocEventImageId>0">
+                                                            <a class="btn btn-xs btn-danger" href="#" (click)="deleteAttachment(data)" id="btnRemoveDocument" title="Delete Attachment"><i class="icon-trash mr"> Remove</i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div *ngIf="event.EventImages.length==0">
+                                            <label>&nbsp;&nbsp;&nbsp;&nbsp;There are no image files attached to this event</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr />
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <app-upload></app-upload>
+                                </div>
+                                <div class="col-md-6" data-ng-if="event.EventImages.length>0">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="control-label">Attachment</label>
+                                        </div>
+                                        <div>
+                                            <label class="control-label">Action</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngFor="let data of event.EventImages ">
+                                        <div *ngIf="data.AssocEventImageId>0" class="col-md-6">{{data.ImageName}}</div>
+                                        <div *ngIf="data.AssocEventImageId>0">
+                                            <a class="btn btn-xs btn-danger" href="#" (click)="deleteAttachment(data)" id="btnRemoveDocument" title="Delete Attachment"><i class="fa fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="pull-right">
+                                        <button class="btn btn-sm" tabindex="12" (click)="onBackClick()">Back <i class="fa fa-arrow-left"></i></button>
+                                        <button class="btn btn-success btn-sm" [disabled]="!(bookForm.form.valid && event.EventCategoryId>0)" tabindex="13" (click)="saveEvent()">Save <i class="fa fa-save"></i></button>
+                                        <button class="btn btn-primary btn-sm" tabindex="14" (click)="resetEventData()">Reset&nbsp;<i class="fa fa-refresh"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>-->
+
+                    </tab>
+                </tabset>
+            </form>
+        </div>
+    </div>
+</div>
+<kendo-dialog title="{{imageTitle}}" *ngIf="opened" (close)="closeDialog()">
+    <div class="table-responsive">
+        <img src="data:image/jpeg;base64,{{detailImage}}" />
+    </div>
+    <!--<kendo-dialog-actions>
+        <button kendoButton>Cancel</button>
+        <button kendoButton  >Save</button>
+    </kendo-dialog-actions>-->
+</kendo-dialog>
+
+<kendo-dialog title="No Image Attached" *ngIf="noImages" (close)="closeImageValidationDialog()">
+    <div class="table-responsive">
+        Please upload one thumbnail image and at least one detail image in attachment tab
+    </div>
+    <!--<kendo-dialog-actions>
+        <button kendoButton>Cancel</button>
+        <button kendoButton>Save</button>
+    </kendo-dialog-actions>-->
+</kendo-dialog>
+
+<div #spinner></div>
+
+<!--<div class="container col-md-12">
+    <form name="formEvent" #bookForm="ngForm" novalidate>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-2">
+                        <b>{{actionTitle}} Event/Promotion</b>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="pull-right">
+                            <button class="btn btn-sm" tabindex="12" (click)="onBackClick()">Back <i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-primary btn-sm" tabindex="14" (click)="resetEventData()">Reset&nbsp;<i class="fa fa-refresh"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<div #spinner></div>-->

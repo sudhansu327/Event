@@ -1,0 +1,156 @@
+<div class="content-heading">
+    {{title}}
+    <small>{{subtitle}}</small>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <a href="#" (click)="onNavigate('Event')">
+            <div class="panel widget bg-green">
+                <div class="row row-table">
+                    <div class="col-xs-5 text-center bg-green-dark pv-lg">
+                        <em class="fa fa-calendar fa-5x"></em>
+                    </div>
+                    <div class="col-xs-7 pv-lg">
+                        <div class="h2 mt0">{{eventsCount}}</div>
+                        <p class="text-uppercase">Events</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <a href="#" (click)="onNavigate('Promotion')">
+            <div class="panel widget bg-primary">
+                <div class="row row-table">
+                    <div class="col-xs-5 text-center bg-primary-dark pv-lg">
+                        <em class="fa fa-gift fa-5x"></em>
+                    </div>
+                    <div class="col-xs-7 pv-lg">
+                        <div class="h2 mt0">{{promotionsCount}}</div>
+                        <p class="text-uppercase">Promotions</p>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel widget">
+            <div class="row row-table">
+                <div class="col-xs-3 text-center bg-purple-dark pv-lg">
+                    <div class="pull-left">
+                        <em class="icon-plane fa-3x"></em>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-9 pv-lg bg-purple">
+                    <div>
+                        <span class="h4 mt0">Starts On {{firstEvent.EventFromDate}}</span>
+                        <br />
+                        <span class="h5 mt0">{{firstEvent.Title}}</span>
+                    </div>
+                    <div class="text-uppercase h5 mt0">{{firstEvent.ContentType}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel widget">
+            <div class="row row-table">
+                <div class="col-xs-3 text-center bg-warning-dark pv-lg">
+                    <div class="pull-left">
+                        <em class="icon-compass fa-3x"></em>
+                    </div>
+
+                </div>
+                <div class="col-xs-9 pv-lg bg-warning">
+                    <div>
+                        <span class="h4 mt0">Starts On {{secondEvent.EventFromDate}}</span>
+                        <br />
+                        <span class="h5 mt0">{{secondEvent.Title}}</span>
+                    </div>
+                    <div class="text-uppercase h5 mt0">{{secondEvent.ContentType}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <home-calendar></home-calendar>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel widget">
+            <div class="row">
+                <div class="col-xs-5">
+                    <picture class="lateral-picture align-left">
+                        <img src="data:image/jpeg;base64,{{firstEvent.EventDashboardImage}}" border="2" width="200" height="200" hspace="50" />
+                    </picture>
+                        
+
+                   </div>
+                <div class="col-xs-7 align-middle p-lg">
+                    <div class="pull-right">
+                        <a class="btn btn-primary btn-sm" href="{{firstEvent.MoreInfoUrl}}" target="_blank">Learn More   <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                    <p>
+                       
+                        <span class="text-md" format="MMM D">{{firstEvent.EventFromDate}}</span>
+                        <br />{{firstEvent.EventLocation}}
+                    </p>
+                    <p>
+                        <strong>{{firstEvent.EventTitle}}</strong>
+                    </p>
+                    <p>{{firstEvent.SummaryDescription}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel widget">
+            <div class="row">
+                <div class="col-xs-5">
+                    <picture class="lateral-picture align-left">
+                        <img src="data:image/jpeg;base64,{{secondEvent.EventDashboardImage}}" border="2" width="200" height="150" hspace="30" />
+                    </picture>
+                </div>
+                <div class="col-xs-7 align-middle p-lg">
+                    <div class="pull-right">
+                        <a class="btn btn-primary btn-sm" href="{{secondEvent.MoreInfoUrl}}" target="_blank">Learn More   <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                    <p>
+                        <span class="text-md">{{secondEvent.EventFromDate}}</span> <br/>{{secondEvent.EventLocation}}
+                    </p>
+                    <p>
+                        <strong>{{secondEvent.EventTitle}}</strong>
+                    </p>
+                    <p>{{secondEvent.SummaryDescription}}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel widget">
+            <div class="row">
+                <div class="col-xs-5">
+                    <picture class="lateral-picture align-left">
+                        <img src="data:image/jpeg;base64,{{thirdEvent.EventDashboardImage}}" border="2" width="200" height="150" hspace="20" />
+                    </picture>
+                </div>
+                <div class="col-xs-7 align-middle p-lg">
+                    <div class="pull-right">
+                        <a class="btn btn-primary btn-sm" href="{{thirdEvent.MoreInfoUrl}}" target="_blank">Learn More   <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                    <p>
+                        <span class="text-md">{{thirdEvent.EventFromDate}}</span>
+                    </p>
+                    <p>
+                        <strong>{{thirdEvent.EventTitle}}</strong>
+                    </p>
+                    <p>{{thirdEvent.SummaryDescription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div #spinner></div>

@@ -1,0 +1,9 @@
+<parameters>
+  <parameter name="changeDebug" value="false">
+    <parameterEntry type="XMLFile" scope="web.config$" match="//configuration/system.web/compilation/@debug" />
+  </parameter>
+</parameters>
+
+
+
+
